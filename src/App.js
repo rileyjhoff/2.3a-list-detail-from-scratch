@@ -1,26 +1,13 @@
-import { useEffect, useState } from 'react';
 import './App.css';
-import { getPlayerData } from './services/fetch-utils';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ListPage from './components/ListPage';
 import DetailPage from './components/DetailPage';
 
 function App() {
-  const [players, setPlayers] = useState([]);
-
-  useEffect(() => {
-    async function fetch() {
-      const playerData = await getPlayerData();
-
-      setPlayers(playerData);
-    }
-    fetch();
-  }, []);
-
   return (
     <Router>
       <div className="App">
-        {console.log(players)}
         <Switch>
           <Route exact path="/">
             <ListPage />
