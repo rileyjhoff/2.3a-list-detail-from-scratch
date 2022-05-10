@@ -6,13 +6,15 @@ import PlayerList from './PlayerList';
 
 export default function ListPage() {
   const [players, setPlayers] = useState([]);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(2);
   const [paginationItems, setPaginationItems] = useState([]);
   const playersPerPage = 50;
 
   useEffect(() => {
     async function fetch() {
-      const playerData = await getPlayerData();
+      const from = page * playersPerPage - playersPerPage;
+      const to = page * playersPerPage - 1;
+      const playerData = await getPlayerData(from, to);
 
       setPlayers(playerData);
     }
@@ -24,6 +26,7 @@ export default function ListPage() {
   return (
     <div>
       <h2>NHL Players</h2>
+      {console.log(players)}
       <PlayerList />
       <Pagination>{paginationItems}</Pagination>
     </div>
