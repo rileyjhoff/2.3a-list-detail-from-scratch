@@ -20,7 +20,7 @@ export default function ListPage() {
       setLastPage(Math.ceil(playerData.count / playersPerPage));
     }
     load();
-  }, []);
+  });
 
   useEffect(() => {
     async function fetch() {

@@ -16,9 +16,16 @@ export default function DetailPage() {
   }, [params.id]);
 
   return (
-    <div>
+    <div className="detail-page">
       <Link to="/">Home</Link>
-      {console.log(player)};
+      <div>
+        <p>{player.name}</p>
+        <p>{player.team}</p>
+        <p>Position: {player.position}</p>
+        <p>Games Played: {player.games_played}</p>
+        <p>Shifts: {player.shifts}</p>
+        <p>Minutes: {player.icetime}</p>
+      </div>
     </div>
   );
 }
