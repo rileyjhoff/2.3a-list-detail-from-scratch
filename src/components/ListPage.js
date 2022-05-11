@@ -12,16 +12,26 @@ export default function ListPage() {
   const playersPerPage = 50;
 
   useEffect(() => {
+    async function load() {
+      const from = page * playersPerPage - playersPerPage;
+      const to = page * playersPerPage - 1;
+      const playerData = await getPlayerData(from, to);
+
+      setLastPage(Math.ceil(playerData.count / playersPerPage));
+    }
+    load();
+  }, []);
+
+  useEffect(() => {
     async function fetch() {
       const from = page * playersPerPage - playersPerPage;
       const to = page * playersPerPage - 1;
       const playerData = await getPlayerData(from, to);
 
       setPlayers(playerData.data);
-      setLastPage(Math.ceil(playerData.count / playersPerPage));
     }
     fetch();
-  }, []);
+  }, [page]);
 
   useEffect(() => {
     if (page === 1) {
@@ -159,8 +169,8 @@ export default function ListPage() {
   return (
     <div className="list-page">
       <h2>NHL Players</h2>
-      <PlayerList players={players} />
       <Pagination>{paginationItems}</Pagination>
+      <PlayerList players={players} />
     </div>
   );
 }

@@ -9,3 +9,9 @@ export async function getPlayerData(from, to) {
 
   return { data: response.data, count: response.count };
 }
+
+export async function getPlayerById(id) {
+  const response = await client.from('nhl_players').select('*').match({ id }).single();
+
+  return checkError(response);
+}

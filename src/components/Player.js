@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Player({ player }) {
-  console.log(player);
   return (
     <tr>
       <td>{player.team}</td>
