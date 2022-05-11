@@ -136,6 +136,7 @@ export default function PaginationComp({ lastPage, page, setPage }) {
       );
       setPaginationItems(items);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   return <Pagination>{paginationItems}</Pagination>;
