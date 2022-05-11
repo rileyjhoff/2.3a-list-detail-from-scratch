@@ -159,7 +159,7 @@ export default function ListPage() {
   return (
     <div className="list-page">
       <h2>NHL Players</h2>
-      <PlayerList />
+      <PlayerList players={players} />
       <Pagination>{paginationItems}</Pagination>
     </div>
   );
