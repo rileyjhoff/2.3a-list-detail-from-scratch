@@ -8,14 +8,14 @@ export default function PlayerList({ players }) {
       <Table>
         <thead>
           <tr>
-            <th>Name</th>
             <th>Team</th>
+            <th>Name</th>
           </tr>
         </thead>
         <tbody>
-          {players.map((player, i) => {
-            <Player key={player + i} player={player} />;
-          })}
+          {players.map((player, i) => (
+            <Player key={i} player={player} />
+          ))}
         </tbody>
       </Table>
     </div>
